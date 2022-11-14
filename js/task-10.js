@@ -8,7 +8,7 @@ const buttonDestroy = document.querySelector('button[data-destroy]');
 const boxes = document.querySelector('#boxes');
 
 let amount = 0;
-
+let boxesArray = [];
 const createBoxes = (amount) => {
   let widthAndHeight = boxes.lastChild != null ? boxes.lastChild.offsetWidth : 20;
   
@@ -17,8 +17,10 @@ const createBoxes = (amount) => {
     box.style.backgroundColor = getRandomHexColor();
     box.style.width = (widthAndHeight + i*10).toString() + "px";
     box.style.height = (widthAndHeight + i*10).toString()+ "px";
-    boxes.append(box);
+    boxesArray.push(box);
   }
+  boxes.append(...boxesArray);
+  boxesArray = [];
 }
 
 const destroyBoxes = (amount) => {
